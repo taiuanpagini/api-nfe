@@ -11,12 +11,13 @@ import multerConfig from './config/multer';
 const routes = new Router();
 const upload = multer(multerConfig);
 
-routes.post('/users', UserController.store);
+routes.post('/user', UserController.store);
 routes.post('/sessions', SessionController.store);
 
 // Todas as rotas que forem chamadas a partir daqui tem que ser autenticada
 routes.use(authMiddleware);
-routes.put('/users', UserController.update);
+routes.get('/users', UserController.index);
+routes.put('/user', UserController.update);
 
 routes.get('/providers', ProviderController.index);
 
